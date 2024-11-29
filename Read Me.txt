@@ -3,24 +3,24 @@
 | Name : Pranali Dhawade                       |
 |______________________________________________|
 
-6.  Issues with LazySimpleSerde
+  Issues with LazySimpleSerde
     
     LazySimpleSerDe can have problems with fields contain embedded delimiters or quotes.
     It does not handle different delimiters effectively.
 
 
-7.  Find a Right SerDe
+  Find a Right SerDe
 
     For more complex CSV data, we can use OpenCSVSerde as it can handle quoted strings and embedded delimiters better.
 
 
-8.  Find the Sector with the Most Startups
+  Find the Sector with the Most Startups
     To determine which sector has the most startups:
 
     select sector, count(*) as num_startups from Startups group by sector order by num_startups desc limit 1;
 
 
-9.  Find the State with the Maximum Number of Startups
+  Find the State with the Maximum Number of Startups
     To determine which state has the highest number of startups:
     
     SELECT state, COUNT(*) AS startup_count
@@ -37,7 +37,7 @@
     LIMIT 1;
 
 
-10. Find the Total Startups from Maharashtra
+ Find the Total Startups from Maharashtra
 
     To find the total number of startups located in Maharashtra:
 
@@ -46,7 +46,7 @@
     WHERE Location_of_company LIKE '%Maharashtra%';
 
 
-11. Count the Startups in Healthcare
+ Count the Startups in Healthcare
 
     To find the number of startups in the Healthcare sector:
 
