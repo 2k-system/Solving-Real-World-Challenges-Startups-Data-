@@ -1,0 +1,57 @@
+ ______________________________________________
+| Name : Harsh Gupta , PRN : 240840125019      |
+|                                              |
+| Name : Pranali Dhawade , PRN : 240840125036  |
+|______________________________________________|
+
+6.  Issues with LazySimpleSerde
+    
+    LazySimpleSerDe can have problems with fields contain embedded delimiters or quotes.
+    It does not handle different delimiters effectively.
+
+
+7.  Find a Right SerDe
+
+    For more complex CSV data, we can use OpenCSVSerde as it can handle quoted strings and embedded delimiters better.
+
+
+8.  Find the Sector with the Most Startups
+    To determine which sector has the most startups:
+
+    select sector, count(*) as num_startups from Startups group by sector order by num_startups desc limit 1;
+
+
+9.  Find the State with the Maximum Number of Startups
+    To determine which state has the highest number of startups:
+    
+    SELECT state, COUNT(*) AS startup_count
+    FROM (
+        SELECT 
+            CASE
+                WHEN Location_of_company LIKE '%,%' THEN REGEXP_EXTRACT(Location_of_company, '[^,]+$', 0)
+                ELSE 'Unknown State' 
+            END AS state
+        FROM Startups
+    ) AS extracted_states
+    GROUP BY state
+    ORDER BY startup_count DESC
+    LIMIT 1;
+
+
+10. Find the Total Startups from Maharashtra
+
+    To find the total number of startups located in Maharashtra:
+
+    SELECT COUNT(*) AS Total_Startups_Maharashtra
+    FROM Startups
+    WHERE Location_of_company LIKE '%Maharashtra%';
+
+
+11. Count the Startups in Healthcare
+
+    To find the number of startups in the Healthcare sector:
+
+    SELECT COUNT(*) AS Healthcare_Startups
+    FROM Startups
+    WHERE Sector LIKE '%Healthcare%';
+

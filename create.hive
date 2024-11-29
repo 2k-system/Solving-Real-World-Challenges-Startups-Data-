@@ -1,0 +1,22 @@
+DROP TABLE IF EXISTS Startups;
+
+CREATE TABLE Startups (
+    Incubation_centre STRING,
+    Name_of_startup STRING,
+    Location_of_company STRING,
+    sector STRING
+)
+ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'  -- Use OpenCSVSerde for CSV parsing
+WITH SERDEPROPERTIES (
+    "field.delim" = ",",
+    "line.delim" = "\n",
+    "quoteChar" = "\"",
+    "skip.header.line.count" = "1"
+)
+STORED AS TEXTFILE;
+
+describe formatted Startups;
+
+load data inpath '/user/talentum/assignment_2/startups.csv' into table Startups;
+
+

@@ -1,0 +1,23 @@
+select sector, count(*) as num_startups from Startups group by sector order by num_startups desc limit 1;
+
+SELECT state, COUNT(*) AS startup_count
+FROM (
+    SELECT 
+        CASE
+            WHEN Location_of_company LIKE '%,%' THEN REGEXP_EXTRACT(Location_of_company, '[^,]+$', 0)
+            ELSE 'Unknown State' 
+        END AS state
+    FROM Startups
+) AS extracted_states
+GROUP BY state
+ORDER BY startup_count DESC
+LIMIT 1;
+
+
+SELECT COUNT(*) AS Total_Startups_Maharashtra
+FROM Startups
+WHERE Location_of_company LIKE '%Maharashtra%';
+
+SELECT COUNT(*) AS Healthcare_Startups
+FROM Startups
+WHERE Sector LIKE '%Healthcare%';
