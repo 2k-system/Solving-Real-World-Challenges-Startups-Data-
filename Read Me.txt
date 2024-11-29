@@ -1,7 +1,6 @@
  ______________________________________________
-| Name : Harsh Gupta , PRN : 240840125019      |
 |                                              |
-| Name : Pranali Dhawade , PRN : 240840125036  |
+| Name : Pranali Dhawade                       |
 |______________________________________________|
 
 6.  Issues with LazySimpleSerde
